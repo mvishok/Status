@@ -18,7 +18,7 @@
 
                     <div class="card-body">
                         {% for service in services %}
-                            <p class="card-text">{{ service.name }} API : <strong>Active</strong> <img src="{{ url_for('static', filename='images/'+service.status+'.png') }}" height="20px" style="border-radius:50%;" title="{{service.status}}"></p>
+                            <p class="card-text">{{ service.name }} API : <strong>{{ service.status }}</strong> <img src="{{ url_for('static', filename='images/'+service.status+'.png') }}" height="20px" style="border-radius:50%;" title="{{service.status}}"></p>
                         {% endfor %}
                     </div>
 
