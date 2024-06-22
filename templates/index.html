@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Vishok Manikantan - Status</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="container mt-5">
+        <h2>Vishok Manikantan - API Status</h2>
+        <p>This is a status page for all of my API services.</p>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">API Status</div>
+
+                    <div class="card-body">
+                        {% for service in services %}
+                            <p class="card-text">{{ service.name }} API : <strong>Active</strong> <img src="{{ url_for('static', filename='images/'+service.status+'.png') }}" height="20px" style="border-radius:50%;" title="{{service.status}}"></p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="card-footer text-muted">API is updated every 5 minutes.</div>
+                </div>
+            </div>  
+        </div>
+
+        <br>
+  
+        <div class="row">
+        
+            {% for service in services %}
+                <div class="col-md-3">
+                    <div class="card text-white {% if service.status == 'Active' %}bg-success{% elif service.status == 'Busy' %}bg-warning{% else %}bg-danger{% endif %} mb-3" style="max-width: 18rem;">
+                        <div class="card-header">{{ service.name }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ service.status }}</h5>
+                            <p class="card-text">{{ service.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        
+        <br>
+  
+        <div class="row text-center border-top">
+            <div class="col-md-12">
+                <p>&copy; <a href="https://vishok.me/" target="_blank">Vishok Manikantan</a>, 2024</p>
+            </div> 
+        </div>
+    </div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js'></script>
+<script>
+$(function () {
+    $('[data-toggle="popover"]').popover();
+});
+</script>
+</body>
+</html>

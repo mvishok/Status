@@ -1,0 +1,1 @@
+## This is a simple status page for my APIs
