@@ -55,7 +55,7 @@ def check_service_status(service):
         if response.status_code == 200:
             data = response.json()
             if data.get('status') == 'success':
-                if response_time_ms < 100:
+                if response_time_ms < 600:
                     service["status"] = 'Active'
                 else:
                     service["status"] = 'Busy'
